@@ -21,7 +21,10 @@ class App extends Component{
     return(
       <NavigationContainer>
         <Stack.Navigator
-          screenOptions={{headerStyle: styles.header}}>
+          screenOptions={{
+            headerStyle: styles.header,
+            headerBackTitleVisible: false,
+            headerTintColor: Colors.black}}>
           <Stack.Screen name='Home' component={HomeScreen} options={{title: 'Let\'s Start'}}/>
           <Stack.Screen name='Crust' component={CrustScreen} options={{title: 'Step 2'}}/>
           <Stack.Screen name='Ingredients' component={IngredientsScreen} options={{title: 'Step 3'}}/>
