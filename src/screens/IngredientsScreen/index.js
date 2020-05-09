@@ -45,6 +45,15 @@ class IngredientsScreen extends Component{
         })
     }
 
+    renderExtraCost(){
+        const cost = ((this.props.pizza.ingredients.length - 3) * 0.5);
+        return (
+            <View style={{marginVertical: 10}}>
+                <Text style={{fontSize: 16, color: Colors.black, fontWeight: 'bold'}}>Additional Cost: <Text>${cost}</Text></Text>
+            </View>
+        )
+    }
+
     render(){
         return(
             <View style={Styles.container}>
@@ -53,11 +62,12 @@ class IngredientsScreen extends Component{
                 <View style={styles.container}>
                     {this.renderIngredients()}
                 </View>
+                {this.props.pizza.ingredients.length > 3 ? this.renderExtraCost() : null}
                 <SolidButton
                     text='Order Summary'
                     buttonColor={Colors.green}
                     textColor={Colors.black}
-                    onPress={() => ''}
+                    onPress={() => this.props.navigation.navigate('CheckOut')}
                     isEnabled={this.props.pizza.ingredients.length <= this.props.pizza.base.limit}/>
             </View>
         )
